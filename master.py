@@ -71,8 +71,6 @@ tags = set()
 for i in xrange(10):
     tags = tags.union(actual[i])
 
-print tags
-
 if "new.txt" not in os.listdir("."):
     print "writing to file"
     f = open("new.txt", "w")
