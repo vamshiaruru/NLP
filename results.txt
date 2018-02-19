@@ -7,4 +7,3 @@ for tag:I-MISC, accuracy:0.996156083777, precision:0.93904109589, recall:0.82990
 for tag:B-MISC, accuracy:0.993808178191, precision:0.973277074543, recall:0.87351678869, f_score:0.92070250133
 for tag:I-ORG, accuracy:0.992229055851, precision:0.907780979827, recall:0.479452054795, f_score:0.627490039841
 for tag:B-LOC, accuracy:0.987543633644, precision:0.80827519846, recall:0.893141945774, f_score:0.848591993939
-globally, accuracy:0.99108165263, precision:0.959867436835, recall:0.959867436835, f_score:0.959867436835

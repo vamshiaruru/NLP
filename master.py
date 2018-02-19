@@ -1,6 +1,6 @@
 from __future__ import division
-import os
 from collections import Counter
+import os
 
 
 i = 0
@@ -71,20 +71,20 @@ tags = set()
 for i in xrange(10):
     tags = tags.union(actual[i])
 
-if "new.txt" not in os.listdir("."):
+
+if "predictions.txt" not in os.listdir("."):
     print "writing to file"
-    f = open("new.txt", "w")
+    f = open("predictions.txt", "w")
     for j in xrange(10):
         f.write("for file {}: \n".format(j))
         for i in xrange(len(actual[j])):
             f.write(actual[j][i]+"\t"+maximal[j][i])
+            if actual[j][i] == maximal[j][i]:
+                f.write("\t\t\t true prediction")
+            else:
+                f.write("\t\t\t false prediction")
             f.write("\n")
     f.close()
-
-global_fp = 0
-global_tp = 0
-global_fn = 0
-global_tn = 0
 
 f = open("results.txt", "w")
 
@@ -110,10 +110,6 @@ for tag in tags:
                 else:
                     true_negatives += 1
 
-    global_fn += false_negatives
-    global_fp += false_positives
-    global_tp += true_positives
-    global_tn += true_negatives
     accuracy = (true_positives + true_negatives)/(true_positives +
                                                   true_negatives +
                                                   false_positives +
@@ -125,12 +121,4 @@ for tag in tags:
             format(tag, accuracy, precision, recall, f_score))
     f.write("\n")
 
-accuracy = (global_tp + global_tn)/(global_tp + global_tn + global_fn +
-                                    global_fp)
-precision = global_tp/(global_tp + global_fp)
-recall = global_tp/(global_tp + global_fn)
-f_score = (2 * precision * recall) / (precision + recall)
-f.write("globally, accuracy:{}, precision:{}, recall:{}, f_score:{}".format(
-    accuracy, precision, recall, f_score))
-f.write("\n")
 f.close()
