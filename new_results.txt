@@ -1,0 +1,5 @@
+for tag:LOC,    precision:0.793211957743, recall:0.891837250442, f_score:0.839638353557
+for tag:PERSON, precision:0.850440444274, recall:0.89789729074, f_score:0.873524783635
+for tag:MISC,   precision:0.980623252097, recall:0.874576875111, f_score:0.924569168472
+for tag:O,      precision:0.978227740582, recall:0.992824452643, f_score:0.985472048322
+for tag:ORG,    precision:0.940249507551, recall:0.500524292206, f_score:0.653284671533
