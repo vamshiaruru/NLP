@@ -12,7 +12,13 @@ for filename in sorted(os.listdir("./actual")):
             words = line.strip().split(" ")
             if len(words) != 1:
                 l.append(words[2].strip())
-    actual[i] = l
+    lo = []
+    for tag in l:
+        if tag == "O":
+            lo.append(tag)
+        else:
+            lo.append(tag[2:])
+    actual[i] = lo
     i += 1
 
 i = 0
@@ -24,7 +30,13 @@ for filename in sorted(os.listdir("./CRF++")):
             words = line.strip().split("\t")
             if len(words) != 1:
                 l.append(words[3].strip())
-    crf[i] = l
+    lo = []
+    for tag in l:
+        if tag == "O":
+            lo.append(tag)
+        else:
+            lo.append(tag[2:])
+    crf[i] = lo
     i += 1
 
 i = 0
@@ -36,7 +48,13 @@ for filename in sorted(os.listdir("./LSTM CRF")):
             words = line.strip().split(" ")
             if len(words) != 1:
                 l.append(words[2].strip())
-    lstm[i] = l
+    lo = []
+    for tag in l:
+        if tag == "O":
+            lo.append(tag)
+        else:
+            lo.append(tag[2:])
+    lstm[i] = lo
     i += 1
 
 i = 0
@@ -49,7 +67,13 @@ for filename in sorted(os.listdir("./YamCha")):
             words = line.split("\t")
             if len(words) != 1:
                 l.append(words[3].strip())
-    yamcha[i] = l
+    lo = []
+    for tag in l:
+        if tag == "O":
+            lo.append(tag)
+        else:
+            lo.append(tag[2:])
+    yamcha[i] = lo
     i += 1
 
 maximal = {}
@@ -72,9 +96,9 @@ for i in xrange(10):
     tags = tags.union(actual[i])
 
 
-if "predictions.txt" not in os.listdir("."):
+if "mod_predictions.txt" not in os.listdir("."):
     print "writing to file"
-    f = open("predictions.txt", "w")
+    f = open("mod_predictions.txt", "w")
     for j in xrange(10):
         f.write("for file {}: \n".format(j))
         for i in xrange(len(actual[j])):
@@ -86,7 +110,7 @@ if "predictions.txt" not in os.listdir("."):
             f.write("\n")
     f.close()
 
-f = open("results.txt", "w")
+f = open("new_results.txt", "w")
 
 for tag in tags:
     false_positives = 0
