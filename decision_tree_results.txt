@@ -1,0 +1,5 @@
+for tag:LOC, precision is 0.885085574572, recall is 0.932989690722, fscore is 0.908406524467
+for tag:MISC, precision is 0.97619047619, recall is 0.948398576512, fscore is 0.962093862816
+for tag:O, precision is 0.98842651151, recall is 0.989866362658, fscore is 0.989145913104
+for tag:ORG, precision is 0.828947368421, recall is 0.766956521739, fscore is 0.79674796748
+for tag:PERSON, precision is 0.927855711423, recall is 0.937246963563, fscore is 0.932527693857

@@ -1,0 +1,5 @@
+for the tag LOC, precision 0.891837250442, recall 0.793211957743, fscore 0.839638353557
+for the tag MISC, precision 0.874576875111, recall 0.980623252097, fscore 0.924569168472
+for the tag O, precision 0.992824452643, recall 0.978227740582, fscore 0.985472048322
+for the tag ORG, precision 0.500524292206, recall 0.940249507551, fscore 0.653284671533
+for the tag PERSON, precision 0.89789729074, recall 0.850440444274, fscore 0.873524783635

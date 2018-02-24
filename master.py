@@ -1,5 +1,6 @@
 from __future__ import division
 from collections import Counter
+from sklearn.metrics import precision_recall_fscore_support as score
 import os
 
 
@@ -76,6 +77,16 @@ for filename in sorted(os.listdir("./YamCha")):
     yamcha[i] = lo
     i += 1
 
+if "DT_data.txt" not in os.listdir("."):
+    with open("DT_data.txt", "w") as fp:
+        for i in xrange(10):
+            a_list = actual[i]
+            y_list = yamcha[i]
+            l_list = lstm[i]
+            c_list = crf[i]
+            for j in xrange(len(a_list)):
+                fp.write(c_list[j]+" "+y_list[j]+" "+l_list[j]+" "+a_list[j]+"\n")
+
 maximal = {}
 for i in xrange(10):
     l = []
@@ -109,40 +120,15 @@ if "mod_predictions.txt" not in os.listdir("."):
                 f.write("\t\t\t false prediction")
             f.write("\n")
     f.close()
-
-f = open("new_results.txt", "w")
-
-for tag in tags:
-    false_positives = 0
-    true_positives = 0
-    false_negatives = 0
-    true_negatives = 0
-    for i in xrange(10):
-        actual_list = actual[i]
-        predicted_list = maximal[i]
-        for j in xrange(len(actual_list)):
-            entity = actual_list[j]
-            predicted = predicted_list[j]
-            if entity == tag:
-                if predicted == tag:
-                    true_positives += 1
-                else:
-                    false_negatives += 1
-            else:
-                if predicted == tag:
-                    false_positives += 1
-                else:
-                    true_negatives += 1
-
-    accuracy = (true_positives + true_negatives)/(true_positives +
-                                                  true_negatives +
-                                                  false_positives +
-                                                  false_negatives)
-    precision = true_positives/(true_positives + false_positives)
-    recall = true_positives/(true_positives + false_negatives)
-    f_score = (2 * precision * recall)/(precision + recall)
-    f.write("for tag:{}, accuracy:{}, precision:{}, recall:{}, f_score:{}".
-            format(tag, accuracy, precision, recall, f_score))
-    f.write("\n")
-
-f.close()
+output_data = []
+actual_data = []
+for i in xrange(10):
+    output_data = output_data + maximal[i]
+    actual_data = actual_data + actual[i]
+precision, recall, fscore, support = score(output_data, actual_data)
+tags = sorted(list(tags))
+fp = open("simple_ensemble_results.txt", "w")
+for i in xrange(len(tags)):
+    fp.write("for the tag {}, precision {}, recall {}, fscore {}\n".format(
+        tags[i], precision[i], recall[i], fscore[i]))
+fp.close()
