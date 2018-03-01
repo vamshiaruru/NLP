@@ -1,5 +1,23 @@
-for tag:LOC, precision is 0.885085574572, recall is 0.932989690722, fscore is 0.908406524467
-for tag:MISC, precision is 0.97619047619, recall is 0.948398576512, fscore is 0.962093862816
-for tag:O, precision is 0.98842651151, recall is 0.989866362658, fscore is 0.989145913104
-for tag:ORG, precision is 0.828947368421, recall is 0.766956521739, fscore is 0.79674796748
-for tag:PERSON, precision is 0.927855711423, recall is 0.937246963563, fscore is 0.932527693857
+
+*******************************************************
+NAIVE BAYES
+		Precision 	 Recall 	 F-Score
+PERSON:		85.7794		89.5059		87.603
+LOCATION:	84.2044		89.5954		86.8163
+ORGANISATION:	64.249		85.4112		73.3339
+Others:		99.598		97.9395		98.7618
+*******************************************************
+ENSEMBLE WITH DT
+		Precision 	 Recall 	 F-Score
+PERSON:		90.03		93.8		91.88
+LOCATION:	87.54		92.68		90.040
+ORGANISATION:80.03		75.22		77.5586
+Others:		98.90		98.79		98.85
+*******************************************************
+SIMPLE ENSEMBLE
+		Precision 	 Recall 	 F-Score
+PERSON:		89.78		85.044		87.35
+LOCATION:	89.18		79.32		83.96
+ORGANISATION:	50.05	94.02		65.327
+Others:		99.282		97.822		98.547
+*******************************************************
